@@ -1,3 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-family: "DM Sans", sans-serif;
+}
+
+#input-box {
+  border: 1px solid #394150;
+}
+
+body {
+  background-image: linear-gradient(
+    to right,
+    #c212e7,
+    #913fc6,
+    #6c489e,
+    #524771,
+    #414141
+  );
+}
+
+textarea {
+  background: transparent;
+}
+
+hr {
+  width: 90%;
+  color: #394150;
+}
