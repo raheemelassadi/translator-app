@@ -35,3 +35,15 @@ hr {
   width: 90%;
   color: #394150;
 }
+
+textarea:focus,
+textarea:active {
+  border: none;
+  outline: none;
+}
+
+textarea {
+  font-family: "DM Sans", sans-serif;
+
+  caret-color: aliceblue;
+}
