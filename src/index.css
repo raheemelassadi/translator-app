@@ -13,14 +13,18 @@
 }
 
 body {
-  background-image: linear-gradient(
+  background-image: url("../public/hero_img.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* background-image: linear-gradient(
     to right,
     #c212e7,
     #913fc6,
     #6c489e,
     #524771,
     #414141
-  );
+  ); */
 }
 
 textarea {
