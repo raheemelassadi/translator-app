@@ -1,27 +1,41 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import { current } from "tailwindcss/colors";
 
 function App() {
+  const [currentNumLetters, setCurrentNumLetters] = useState(0);
+
+  const handleInput = (e) => {
+    // Update state with the current number of letters
+    setCurrentNumLetters(e.target.value.length);
+  };
+
   return (
     <>
-      <body
+      <div
         id="body"
         className="flex justify-center flex-col items-center h-screen"
       >
         <div id="input-box" className=" bg-lightBlue rounded-3xl">
-          <ul className="flex gap-11 px-14 py-9 text-lightGray text-lg font-medium">
+          <ul className="flex gap-11 px-14 py-9 text-lightGray text-lg font-semibold items-center">
             <li className="cursor-pointer">Detect Language</li>
             <li className="cursor-pointer">English</li>
             <li className="cursor-pointer">French</li>
             <li>
-              <select name="" id="" className="mr-60">
-                <option value="spanish">Spanish</option>
-                <option value="german">German</option>
-              </select>
+              <form className="mr-60">
+                <select
+                  id="countries"
+                  className=" border-gray-300  text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-lightGray bg-transparent dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer"
+                >
+                  <option value="DE">German</option>
+                  <option value="ES">Spanish</option>
+                </select>
+              </form>
             </li>
           </ul>
-          <hr className="m-auto text-lightgray" />
+          <hr className="border-1 border-lightGray mx-auto" />
+
           {/* section to actually write the text */}
           <div id="text-input">
             <textarea
@@ -29,10 +43,12 @@ function App() {
               id=""
               cols="30"
               rows="10"
-              className="w-full resize-none pl-10 p-7 text-lg text-brightWhite font-semibold"
+              className="w-full resize-none pl-10 pt-7 pr-7 text-lg text-brightWhite font-semibold box-border"
+              maxLength="100"
+              onInput={handleInput}
             ></textarea>
             <p className="text-right px-8 text-lightGray font-medium ">
-              19/500
+              {currentNumLetters}/200
             </p>
           </div>
           <footer className="flex justify-between pb-7 px-7 pt-3 items-center">
@@ -66,7 +82,7 @@ function App() {
         </div>
 
         <div id="translate-box"></div>
-      </body>
+      </div>
     </>
   );
 }

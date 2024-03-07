@@ -10,6 +10,7 @@
 
 #input-box {
   border: 1px solid #394150;
+  backdrop-filter: blur(10px);
 }
 
 body {
@@ -44,6 +45,5 @@ textarea:active {
 
 textarea {
   font-family: "DM Sans", sans-serif;
-
   caret-color: aliceblue;
 }
