@@ -2,13 +2,27 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { current } from "tailwindcss/colors";
+import TranslateReq from "./TranslateReq";
 
 function App() {
   const [currentNumLetters, setCurrentNumLetters] = useState(0);
+  const [inputText, setInputText] = useState("");
+  const [targetLang, setTargetLang] = useState("");
+  const [translationRequested, setTranslationRequested] = useState(false);
 
   const handleInput = (e) => {
     // Update state with the current number of letters
     setCurrentNumLetters(e.target.value.length);
+    setInputText(e.target.value);
+    setTranslationRequested(false);
+  };
+
+  const handleLanguageChange = (e) => {
+    setTargetLang(e.target.value);
+  };
+
+  const handleClick = () => {
+    setTranslationRequested(true);
   };
 
   return (
@@ -27,6 +41,8 @@ function App() {
                 <select
                   id="countries"
                   className=" border-gray-300  text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-lightGray bg-transparent dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer"
+                  onChange={handleLanguageChange}
+                  value={targetLang}
                 >
                   <option value="DE">German</option>
                   <option value="ES">Spanish</option>
@@ -48,7 +64,7 @@ function App() {
               onInput={handleInput}
             ></textarea>
             <p className="text-right px-8 text-lightGray font-medium ">
-              {currentNumLetters}/200
+              {currentNumLetters}/100
             </p>
           </div>
           <footer className="flex justify-between pb-7 px-7 pt-3 items-center">
@@ -61,7 +77,10 @@ function App() {
               </button>
             </div>
             <div>
-              <button className="flex  text-brightWhite bg-darkblue w-44 justify-center align-middle items-center border-babyBlue border-2 p-3 rounded-2xl gap-2">
+              <button
+                className="flex  text-brightWhite bg-darkblue w-44 justify-center align-middle items-center border-babyBlue border-2 p-3 rounded-2xl gap-2"
+                onClick={handleClick}
+              >
                 <svg
                   className="h-8 w-8 "
                   fill="none"
